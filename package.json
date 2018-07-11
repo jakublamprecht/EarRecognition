@@ -9,7 +9,7 @@
     "build:addon": "electron-rebuild",
     "build:addon:gyp": "node-gyp rebuild",
     "build:app:prod": "webpack --mode production",
-    "build:app:dev:watch": "webpack --mode development --watch",
+    "build:app:dev": "webpack --mode development --watch",
     "build:all": "npm run build:addon && npm run build:app:prod",
     "electron": "electron .",
     "start": "concurrently \"npm run build:app:dev\" \"npm run electron\""

@@ -1,3 +1,5 @@
-module.exports = {
+const CONF = {
 
-};
+}
+
+export default CONF;

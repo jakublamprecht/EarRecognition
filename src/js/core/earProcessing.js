@@ -10,4 +10,4 @@ function getAddon() {
     return earImgProcessing;
 }
 
-module.exports = getAddon();
+export default getAddon();
