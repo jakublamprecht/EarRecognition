@@ -1,8 +1,11 @@
 {
   "targets": [{
     "target_name": "earImgProcessing",
+    "dependencies": [
+      "<!(node -p \"require('node-addon-api').gyp\")"
+    ],
     "include_dirs": [
-      "<!(node -e \"require('nan')\")",
+      "<!@(node -p \"require('node-addon-api').include\")",
       "<(module_root_dir)/vendor/OpenCV/include",
       "<(module_root_dir)/vendor/OpenCV/include/opencv",
       "<(module_root_dir)/vendor/OpenCV/include/opencv2"
@@ -12,6 +15,9 @@
     ],
     "sources": [
       "./src/cpp/main.cc"
-    ]
+    ],
+    "defines": [
+      "NAPI_DISABLE_CPP_EXCEPTIONS"
+    ],
   }]
 }

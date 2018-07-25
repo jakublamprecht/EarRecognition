@@ -1,26 +1,34 @@
-#include <nan.h>
-#include <opencv2/opencv.hpp>
+#include <napi.h>
 
-void showImg() {
-  cv::Mat myMat;
+Napi::Value invertColors(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
 
-  myMat = cv::imread("../../assets/img/450x650.png", 0);
+  if(info.Length() < 3) {
+    Napi::TypeError::New(env, "Wrong number of arguments").ThrowAsJavaScriptException();
+    return env.Null();
+  }
 
-  cv::namedWindow("My test window", 0);
-  cv::imshow("My test window", myMat);
+  if (!info[0].IsNumber() || !info[1].IsNumber() || !info[2].IsTypedArray()) {
+    Napi::TypeError::New(env, "Wrong arguments").ThrowAsJavaScriptException();
+    return env.Null();
+  }
 
-  cv::waitKey(0);
+  uint32_t width = info[0].As<Napi::Number>().Uint32Value();
+  uint32_t height = info[1].As<Napi::Number>().Uint32Value();
+  uint8_t* data = info[2].As<Napi::TypedArrayOf<uint8_t>>().Data();
 }
 
-void Method(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  info.GetReturnValue().Set(Nan::New("world").ToLocalChecked());
+Napi::String Method(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  return Napi::String::New(env, "world");
 }
 
-void Init(v8::Local<v8::Object> exports) {
-  showImg();
-
-  exports->Set(Nan::New("hello").ToLocalChecked(),
-               Nan::New<v8::FunctionTemplate>(Method)->GetFunction());
+Napi::Object Init(Napi::Env env, Napi::Object exports) {
+  exports.Set(Napi::String::New(env, "hello"),
+              Napi::Function::New(env, Method));
+  exports.Set(Napi::String::New(env, "invertColors"),
+              Napi::Function::New(env, invertColors));
+  return exports;
 }
 
-NODE_MODULE(earImgProcessing, Init)
+NODE_API_MODULE(earImgProcessing, Init)

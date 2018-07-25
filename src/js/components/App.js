@@ -5,13 +5,12 @@ import ImageWithPicker from './presentational/ImageWithPicker';
 class App extends Component {
     componentDidMount() {
         console.log(earRecognition.hello());
-        earRecognition.showImg();
     }
 
     render() {
         return (
             <div>
-                <h1>This is fucking react, BITCH.</h1>
+                <h1>Stuff</h1>
                 <ImageWithPicker id="test-canvas"/>
             </div>
         );
