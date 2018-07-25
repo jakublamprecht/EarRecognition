@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "E:\\vckpg\\installed\\x86-windows\\include",
+                "${workspaceFolder}\\node_modules\\node-addon-api",
+                "${workspaceFolder}\\node_modules\\node-addon-api\\src"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}
