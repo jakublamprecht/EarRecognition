@@ -1,39 +1,31 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
-require('electron-reload')(__dirname);
+const isDev = process.env.NODE_ENV === 'development' ? true : false;
+let win
 
-  // Keep a global reference of the window object, if you don't, the window will
-  // be closed automatically when the JavaScript object is garbage collected.
-  let win
+function createWindow () {
+  const entryPath = isDev ? 'http://localhost:8080/index.html' : `file://${path.join(__dirname, './dist/index.html')}`;
+  
+  win = new BrowserWindow({width: 1200, height: 800});
+  win.loadURL(entryPath);
+  win.webContents.openDevTools({ mode: 'undocked' });
 
-  function createWindow () {
-    win = new BrowserWindow({width: 1200, height: 800});
+  win.on('closed', () => {
+    win = null
+  });
+}
 
-    win.loadFile('./dist/index.html');
-    win.webContents.openDevTools({ mode: 'undocked' });
+app.on('ready', createWindow);
 
-    // Emitted when the window is closed.
-    win.on('closed', () => {
-      // Dereference the window object, usually you would store windows
-      // in an array if your app supports multi windows, this is the time
-      // when you should delete the corresponding element.
-      win = null
-    });
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
   }
+});
 
-  app.on('ready', createWindow);
-
-  app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-      app.quit();
-    }
-  });
-
-  app.on('activate', () => {
-    if (win === null) {
-      createWindow();
-    }
-  });
-
-  // In this file you can include the rest of your app's specific main process
-  // code. You can also put them in separate files and require them here.
+app.on('activate', () => {
+  if (win === null) {
+    createWindow();
+  }
+});
