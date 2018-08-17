@@ -1,0 +1,11 @@
+.header .tabs {
+    .tabs_item {
+        a {
+            color: $font-color-secondary;
+        }
+
+        &:hover {
+            border-bottom: 2px solid $font-color-secondary;
+        }
+    }
+}

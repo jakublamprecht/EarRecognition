@@ -1,4 +1,8 @@
+@import 'core/core';
 @import 'vars/colors';
+@import 'typography/typography';
+
+@import 'components/components';
 
 body {
     background: $background-main;

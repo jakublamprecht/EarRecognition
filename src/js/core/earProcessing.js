@@ -1,13 +1,3 @@
-function getAddon() {
-    var earImgProcessing;
+var addon = require('bindings')('earImgProcessing.node');
 
-    if (process.env.DEBUG) {
-        //earImgProcessing = require('node-loader!../../../build/Debug/earImgProcessing.node');
-    }
-    // wrap it in else tag after you make addon build in release mode
-    earImgProcessing = require('node-loader!../../../build/Release/earImgProcessing.node');
-
-    return earImgProcessing;
-}
-
-export default getAddon();
+export default addon;

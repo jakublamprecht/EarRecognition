@@ -1,20 +1,14 @@
-import React, { Component } from 'react';
-import earRecognition from '../core/earProcessing'
-import ImageWithPicker from './presentational/ImageWithPicker';
+import React from 'react';
+import { hot } from 'react-hot-loader';
 
-class App extends Component {
-    componentDidMount() {
-        console.log(earRecognition.hello());
-    }
+import Header from 'Presentational/Header';
+import Main from 'Views/Main';
 
-    render() {
-        return (
-            <div>
-                <h1>Stuff</h1>
-                <ImageWithPicker id="test-canvas"/>
-            </div>
-        );
-    }
-}
+const App = () => (
+    <div>
+        <Header/>
+        <Main/>
+    </div>
+)
 
-export default App;
+export default hot(module)(App);
