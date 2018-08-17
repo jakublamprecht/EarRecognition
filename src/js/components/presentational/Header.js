@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import TabsContainer from 'Containers/TabsContainer';
 import Tab from './Tab';
@@ -8,9 +8,9 @@ const Header = props => (
     <header className="header">
         <nav>
             <TabsContainer>
-                <Tab><Link to="/methods">Feature Extraction</Link></Tab>
-                <Tab><Link to="/matching">Matching</Link></Tab>
-                <Tab><Link to="/experiment">Experiment</Link></Tab>
+                <Tab><NavLink to="/methods" activeClassName="active">Feature Extraction</NavLink></Tab>
+                <Tab><NavLink to="/matching" activeClassName="active">Matching</NavLink></Tab>
+                <Tab><NavLink to="/experiment" activeClassName="active">Experiment</NavLink></Tab>
             </TabsContainer>
         </nav>
     </header>

@@ -9,10 +9,10 @@ import Experiments from 'Views/Experiments';
 const Main = () => (
   <main>
     <Switch>
-      <Route exact path='/' component={Home}/>
-      <Route path='/methods' component={Methods}/>
-      <Route path='/matching' component={Matching}/>
-      <Route path='/experiment' component={Experiments}/>
+      <Route exact path='/' component={ Home }/>
+      <Route path='/methods' component={ Methods }/>
+      <Route path='/matching' component={ Matching }/>
+      <Route path='/experiment' component={ Experiments }/>
     </Switch>
   </main>
 )
