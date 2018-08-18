@@ -1,11 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const Method2 = ({ match }) => (
+const Method2Content = () => (
     <div>
         <h1>Method2</h1>
-        <Link to={ `${match.path}/conf` }>Configure</Link>
     </div>
 );
 
-export default Method2;
+export default Method2Content;
