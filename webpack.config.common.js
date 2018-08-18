@@ -54,6 +54,7 @@ module.exports = {
         extensions: ['.js', '.jsx'],
         alias: {
             EarProcessing$: path.resolve(__dirname, './src/js/core/earProcessing.js'),
+            Core: path.resolve(__dirname, './src/js/core/'),
             Views: path.resolve(__dirname, './src/js/views/'),
             Containers: path.resolve(__dirname, './src/js/components/containers/'),
             Presentational: path.resolve(__dirname, './src/js/components/presentational/'),
