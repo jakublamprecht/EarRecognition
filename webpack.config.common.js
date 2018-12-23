@@ -17,7 +17,6 @@ module.exports = {
     entry: SRC_DIR + '/js/renderer.js',
     output: {
         path: OUTPUT_DIR,
-        publicPath: '/',
         filename: 'bundle.js'
     },
     module: {

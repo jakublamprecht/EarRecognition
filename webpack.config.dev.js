@@ -10,6 +10,9 @@ const defaultInclude = [SRC_DIR];
 
 module.exports = webpackMerge(commonConfig, {
     mode: 'development',
+    output: {
+        publicPath: '/'
+    },
     module: {
         rules: [
             {

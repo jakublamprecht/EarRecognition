@@ -16,11 +16,14 @@ class ImageAdapter {
         Napi::Uint8Array toCanvasImageData(Napi::Env env);
 
         void invertColors();
-        void toGrayscale();
+        void contourCC();
 
     protected:
 
     private:
+        void toGrayscale();
+        cv::Mat getWindowForPixel(cv::Point pixel, int windowSize);
+
         cv::Mat cvImg;
         uint8_t* data;
 };

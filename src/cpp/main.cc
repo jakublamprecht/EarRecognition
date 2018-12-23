@@ -64,6 +64,8 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
               Napi::Function::New(env, Method));
   exports.Set(Napi::String::New(env, "invertColors"),
               Napi::Function::New(env, invertColors));
+  exports.Set(Napi::String::New(env, "edgeDetection"),
+              Napi::Function::New(env, edgeDetection));
   return exports;
 }
 

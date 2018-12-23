@@ -35,7 +35,8 @@ class ImageWithPicker extends Component {
             const img = new Image();
             const ctx = canvas.getContext('2d');
 
-            img.src = file.path;
+            //img.src = file.getAsDataURL();
+            img.src = file.path; // an issue - this works for filesystem, the above works for devserver
             img.onload = function () {
                 canvas.width = this.width;
                 canvas.height = this.height;
@@ -53,7 +54,7 @@ class ImageWithPicker extends Component {
 
         console.log('Current data', ctx.getImageData(0, 0, w, h).data);
 
-        EarProcessing.invertColors(ctx.getImageData(0, 0, w, h)).then(this.redrawCanvas);
+        EarProcessing.edgeDetection(ctx.getImageData(0, 0, w, h)).then(this.redrawCanvas);
     }
 
     render() {
